@@ -11,7 +11,7 @@ function Message({ message, currentUser, onMessageDelete, onUpdateMessage }) {
   const isCurrentUser = currentUser.username === username;
 
   function handleDeleteClick() {
-    fetch(`http://localhost:4000/messages/${id}`, {
+    fetch(`http://localhost:9292/messages/${id}`, {
       method: "DELETE",
     });
 
@@ -27,15 +27,7 @@ function Message({ message, currentUser, onMessageDelete, onUpdateMessage }) {
     <li>
       <span className="user">{username}</span>
       <span className="time">{timestamp}</span>
-      {isEditing ? (
-        <EditMessage
-          id={id}
-          body={body}
-          onUpdateMessage={handleUpdateMessage}
-        />
-      ) : (
-        <p>{body}</p>
-      )}
+      {isEditing ? <EditMessage id={id} body={body} onUpdateMessage={handleUpdateMessage} /> : <p>{body}</p>}
       {isCurrentUser ? (
         <div className="actions">
           <button onClick={() => setIsEditing((isEditing) => !isEditing)}>

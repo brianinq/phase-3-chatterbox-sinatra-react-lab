@@ -6,7 +6,7 @@ function NewMessage({ currentUser, onAddMessage }) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    fetch("http://localhost:4000/messages", {
+    fetch("http://localhost:9292/messages", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -25,13 +25,7 @@ function NewMessage({ currentUser, onAddMessage }) {
 
   return (
     <form className="new-message" onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="body"
-        autoComplete="off"
-        value={body}
-        onChange={(e) => setBody(e.target.value)}
-      />
+      <input type="text" name="body" autoComplete="off" value={body} onChange={(e) => setBody(e.target.value)} />
       <button type="submit">Send</button>
     </form>
   );
